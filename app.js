@@ -7,8 +7,8 @@ const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
 require('dotenv').config();
 
-const restaurantRouters = require('./src/routes/restaurant.route');
-const restaurantViewsRouters = require('./src/routes/restaurantsView.route');
+// const restaurantRouters = require('./src/routes/restaurant.route');
+// const restaurantViewsRouters = require('./src/routes/restaurantsView.route');
 const userRouters = require('./src/routes/user.route');
 const sessionRouters = require('./src/routes/session.route');
 const symptomsRouters = require('./src/routes/symptoms.route');
@@ -59,9 +59,9 @@ app.engine('.hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
 app.use('/', sessionRouters);
-app.use('/api/restaurants', restaurantRouters);
-app.use('/api/user', userRouters);
-app.use('/view/restaurants', restaurantViewsRouters);
+// app.use('/api/restaurants', restaurantRouters);
+// app.use('/api/user', userRouters);
+// app.use('/view/restaurants', restaurantViewsRouters);
 app.use('/api/symptoms', symptomsRouters);
 
 /* Error handler middleware */

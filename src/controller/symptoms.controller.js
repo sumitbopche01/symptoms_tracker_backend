@@ -10,7 +10,6 @@ async function get(req, res, next) {
   }
 }
 
-
 async function getMultiple(req, res, next) {
   try {
     res.json(await symptomsService.getMultiple(req.query));
