@@ -7,11 +7,10 @@ const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
 require('dotenv').config();
 
-const restaurantRouters = require('./src/routes/restaurant.route');
-const restaurantViewsRouters = require('./src/routes/restaurantsView.route');
 const userRouters = require('./src/routes/user.route');
 const sessionRouters = require('./src/routes/session.route');
 const symptomsRouters = require('./src/routes/symptoms.route');
+const hospitalsRouters = require('./src/routes/hospitals.route');
 
 require('./src/models/db');
 require('./src/auth/auth');
@@ -59,10 +58,9 @@ app.engine('.hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
 app.use('/', sessionRouters);
-app.use('/api/restaurants', restaurantRouters);
 app.use('/api/user', userRouters);
-app.use('/view/restaurants', restaurantViewsRouters);
 app.use('/api/symptoms', symptomsRouters);
+app.use('/api/hospitals', hospitalsRouters);
 
 /* Error handler middleware */
 // eslint-disable-next-line no-unused-vars

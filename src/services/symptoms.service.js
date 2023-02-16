@@ -1,12 +1,10 @@
 const helper = require('../utils/helper.util');
-const config = require('../configs/general.config');
-const Restaurants = require('../models/restaurants.model');
 const Symptoms = require('../models/symptoms.model');
 
 /**
  *
  * @param {String} symptomsId
- * @returns single restaurant document
+ * @returns single symptom document
  */
 async function getSingle(symptomsId) {
   const rows = await Symptoms.find({ _id: symptomsId });
