@@ -1,0 +1,89 @@
+<div class="modal fade" id="Add_restaurant" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Enter New Restaurant Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/view/restaurants/add" method="post">
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td>
+                                <b>Name:</b>
+                            </td>
+                            <td>
+                                <input type="text" name="name" placeholder="Enter Name" required/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Restaurant Id:</b>
+                            </td>
+                            <td>
+                                <input type="text" name="restaurant_id" placeholder="Enter Restaurant Id" required/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Building:</b>
+                            </td>
+                            <td>
+                                <input type="text" name="building" placeholder="Enter Building"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Street:</b>
+                            </td>
+                            <td>
+                                <input type="text" name="street" placeholder="Enter Street"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>City:</b>
+                            </td>
+                            <td>
+                                <input type="text" name="borough" placeholder="Enter City"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Zip Code:</b>
+                            </td>
+                            <td>
+                                <input type="text" name="zipcode" placeholder="Enter Zip Code"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Coordinates:</b>
+                            </td>
+                            <td>
+                                <input type="text" name="coord" placeholder="Enter Coord"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Cuisine:</b>
+                            </td>
+                            <td>
+                                <input type="text" name="cuisine" placeholder="Enter Cuisine" required/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="hidden" id="token" name="token" value="">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,155 @@
+.button:link, .button:visited {
+  background-color: #ff3333;
+  color: white;
+  border: 2px solid #ff3333;
+  padding: 10px 20px;
+  text-align: center;
+  width: 20%px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.buttonRow {
+  height: 100px;
+}
+
+.button:hover, .button:active {
+  background-color: #b30000;
+  border: 2px solid #b30000;
+  color: white;
+}
+
+.button.disabled {
+  background-color: #b30000;
+  border: 2px solid #b30000;
+  color: white;
+  pointer-events: none;
+  cursor: no-drop;
+  padding: 10px 20px;
+  text-align: center;
+  width: 20%px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.blueButton{
+  background-color: #3385ff;
+  border: 2px solid #3385ff;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  width: 20%px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.blueButton:hover, .blueButton:active {
+  background-color: #0052cc;
+  border: 2px solid #0052cc;
+  color: white;
+}
+
+
+.redButton{
+    background-color: #ff3333;
+    color: white;
+    border: 2px solid #ff3333;
+    padding: 10px 20px;
+    text-align: center;
+    width: 20%px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.redButton:hover, .redButton:active {
+    background-color: #b30000;
+    border: 2px solid #b30000;
+    color: white;
+}
+
+.greenButton{
+  background-color: #009933;
+  border: 2px solid #009933;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  width: 20%px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.greenButton:hover, .greenButton:active {
+  background-color: #006622;
+  border: 2px solid #006622;
+  color: white;
+}
+
+table{
+  width: 100%;
+}
+
+td {
+  padding-left: 10px;
+}
+
+th {
+  padding-left: 10px;
+}
+
+thead {
+  background: grey;
+  color: white;
+}
+
+.divider{
+  width:5px;
+  height:auto;
+  display:inline-block;
+}
+
+.headerMain {
+  padding: 20px;
+  text-align: center;
+  background: #b30000;
+  color: white;
+  font-size: 30px;
+}
+
+.footerMain {
+  padding: 20px;
+  text-align: center;
+  background: #b30000;
+  color: white;
+  font-size: 15px;
+}
+
+#logo {
+  font-weight: bold;
+  font-family: 'Helvetica Neue';
+  font-style: italic;
+  font-size: 40px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.content {
+  flex: 1;
+}

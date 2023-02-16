@@ -1,0 +1,73 @@
+<div class='overflow-x-auto relative shadow-md sm:rounded-lg'>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+            <th scope="col" class="py-3 px-6">
+                Name
+            </th>
+            <th scope="col" class="py-3 px-6">
+                Address
+            </th>
+            <th scope="col" class="py-3 px-6">
+                City
+            </th>
+            <th scope="col" class="py-3 px-6">
+                Cuisine
+            </th>
+            <th scope="col" class="py-3 px-6">
+                Actions
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each data}}
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <td class="py-4 px-6">
+                    {{this.name}}
+                </td>
+                <td class="py-4 px-6">
+                    {{this.address.building}} {{this.address.street}}, {{this.address.zipcode}}
+                </td>
+                <td class="py-4 px-6">
+                    {{this.borough}}
+                </td>
+                <td class="py-4 px-6">
+                    {{this.cuisine}}
+                </td>
+                <td class="py-4 px-6">
+                    <button type="button" class="greenButton" data-toggle="modal" data-target="#view_restaurant_{{this._id}}">
+                        VIEW
+                    </button>
+                    {{> modal/view }}
+                    <button type="button" class="blueButton editButton" data-toggle="modal" data-target="#edit_restaurant_{{this._id}}">
+                        EDIT
+                    </button>
+                    {{> modal/edit }}
+                    <div class="divider"/>
+                    <button type="button" class="redButton deleteButton" data-toggle="modal" data-target="#delete_restaurant_{{this._id}}">
+                        DELETE
+                    </button>
+                    {{> modal/delete }}
+                </td>
+            </tr>
+        {{/each}}
+        <tr class="buttonRow">
+            <td colspan="4">
+                <center>
+                    {{#if (isEqual meta.page 1)}}
+                        <a class="button disabled" style="width: 300px">PREVIOUS</a>
+                    {{else}}
+                        <a class="button" href="/view/restaurants?page={{decrement meta.page}}"  style="width: 300px">PREVIOUS</a>
+                    {{/if}}
+                    <div class="divider"/>
+                    {{#if (isEqual meta.page meta.limit)}}
+                        <a class="button disabled"  style="width: 300px">NEXT</a>
+                    {{else}}
+                        <a class="button" href="/view/restaurants?page={{increment meta.page meta.limit}}"  style="width: 300px">NEXT</a>
+                    {{/if}}
+                </center>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
