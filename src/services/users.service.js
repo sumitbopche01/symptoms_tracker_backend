@@ -30,7 +30,13 @@ async function login(userData) {
   };
 }
 
+async function getAllEmergencyContacts() {
+  const userData = await Users.find({ email});
+  return userData.emergencyContacts;
+}
+
 module.exports = {
   signUp,
   login,
+  getAllEmergencyContacts
 };
