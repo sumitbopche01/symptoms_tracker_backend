@@ -11,6 +11,7 @@ const userRouters = require('./src/routes/user.route');
 const sessionRouters = require('./src/routes/session.route');
 const symptomsRouters = require('./src/routes/symptoms.route');
 const hospitalsRouters = require('./src/routes/hospitals.route');
+const appointmentsRouters = require('./src/routes/appointments.route');
 
 require('./src/models/db');
 require('./src/auth/auth');
@@ -61,6 +62,7 @@ app.use('/', sessionRouters);
 app.use('/api/user', userRouters);
 app.use('/api/symptoms', symptomsRouters);
 app.use('/api/hospitals', hospitalsRouters);
+app.use('/api/appointments', appointmentsRouters);
 
 /* Error handler middleware */
 // eslint-disable-next-line no-unused-vars

@@ -9,6 +9,10 @@ const hospitalSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    doctors: {
+        type: [String],
+        required: true
+    },
     googleMapsUrl: {
         type: String,
         required: true
