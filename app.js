@@ -7,6 +7,8 @@ const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
 require('dotenv').config();
 
+// const restaurantRouters = require('./src/routes/restaurant.route');
+// const restaurantViewsRouters = require('./src/routes/restaurantsView.route');
 const userRouters = require('./src/routes/user.route');
 const sessionRouters = require('./src/routes/session.route');
 const symptomsRouters = require('./src/routes/symptoms.route');

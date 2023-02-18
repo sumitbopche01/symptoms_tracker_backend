@@ -23,19 +23,19 @@ async function getMultiple(queryParams = {}) {
   if (user_email) {
     matchQuery.user_email = user_email.toLowerCase();
   }
-  if(from_date) {
+  if (from_date) {
     matchQuery.from_date = new Date(from_date);
   }
-  if(to_date) {
+  if (to_date) {
     matchQuery.to_date = new Date(to_date);
   }
 
   const rows = await Symptoms.find(matchQuery)
-    .sort({ restaurant_id: 1})
+    .sort({ restaurant_id: 1 })
     .lean();
   const data = helper.emptyOrRows(rows);
   return {
-    data
+    data,
   };
 }
 
