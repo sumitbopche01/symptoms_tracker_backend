@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
+const cors = require('cors')
 require('dotenv').config();
 
 // const restaurantRouters = require('./src/routes/restaurant.route');
@@ -30,6 +31,8 @@ const limiter = rateLimit({
 
 // Apply the rate limiting middleware to all requests
 app.use(limiter);
+
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(

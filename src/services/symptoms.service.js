@@ -31,8 +31,9 @@ async function getMultiple(queryParams = {}) {
   }
 
   const rows = await Symptoms.find(matchQuery)
-    .sort({ restaurant_id: 1 })
+    .sort({ date: 1 })
     .lean();
+    
   const data = helper.emptyOrRows(rows);
   return {
     data,
