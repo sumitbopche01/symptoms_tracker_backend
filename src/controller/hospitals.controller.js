@@ -2,7 +2,8 @@ const hospitalsService = require('../services/hospitals.service');
 
 async function get(req, res, next) {
   try {
-    res.json(await hospitalsService.getSingle(req.params.symptoms_id));
+    console.log(`Received request to get hospital by id ${req.params.hospital_id}`);
+    res.json(await hospitalsService.getSingle(req.params.hospital_id));
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('Error while getting hospitals', err.message);
@@ -13,6 +14,7 @@ async function get(req, res, next) {
 
 async function getMultiple(req, res, next) {
   try {
+    console.log("Received request to get All hospitals");
     res.json(await hospitalsService.getMultiple(req.query));
   } catch (err) {
     // eslint-disable-next-line no-console
