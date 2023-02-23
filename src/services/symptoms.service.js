@@ -1,6 +1,5 @@
 const helper = require('../utils/helper.util');
 const config = require('../configs/general.config');
-const Restaurants = require('../models/restaurants.model');
 const Symptoms = require('../models/symptoms.model');
 
 /**

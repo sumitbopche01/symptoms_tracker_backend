@@ -4,14 +4,14 @@ const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
+const cron = require("node-cron");
 const { errors } = require('celebrate');
 require('dotenv').config();
 
-const restaurantRouters = require('./src/routes/restaurant.route');
-const restaurantViewsRouters = require('./src/routes/restaurantsView.route');
 const userRouters = require('./src/routes/user.route');
 const sessionRouters = require('./src/routes/session.route');
 const symptomsRouters = require('./src/routes/symptoms.route');
+const reminderRouters = require('./src/routes/reminder.route');
 
 require('./src/models/db');
 require('./src/auth/auth');
@@ -58,11 +58,14 @@ const hbs = exphbs.create({
 app.engine('.hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
+cron.schedule("*/10 * * * * *", function() {
+  console.log("running a task every 10 second");
+});
+
 app.use('/', sessionRouters);
-app.use('/api/restaurants', restaurantRouters);
 app.use('/api/user', userRouters);
-app.use('/view/restaurants', restaurantViewsRouters);
 app.use('/api/symptoms', symptomsRouters);
+app.use('/api/reminder', reminderRouters);
 
 /* Error handler middleware */
 // eslint-disable-next-line no-unused-vars
