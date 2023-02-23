@@ -4,17 +4,18 @@ const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
+const cron = require("node-cron");
 const { errors } = require('celebrate');
 const cors = require('cors')
 require('dotenv').config();
-
-// const restaurantRouters = require('./src/routes/restaurant.route');
-// const restaurantViewsRouters = require('./src/routes/restaurantsView.route');
+const Reminder = require('./src/models/reminder.model');
+const reminderRouters = require('./src/routes/reminder.route');
 const userRouters = require('./src/routes/user.route');
 const sessionRouters = require('./src/routes/session.route');
 const symptomsRouters = require('./src/routes/symptoms.route');
 const hospitalsRouters = require('./src/routes/hospitals.route');
 const appointmentsRouters = require('./src/routes/appointments.route');
+const sendEmailMessage = require('./src/utils/mail.util');
 
 require('./src/models/db');
 require('./src/auth/auth');
@@ -63,9 +64,30 @@ const hbs = exphbs.create({
 app.engine('.hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
+// Define the cron job to run every 10 minutes
+cron.schedule('*/1 * * * *', async () => {
+  console.log("I am running")
+  const currentDate = new Date();
+  const matchingDocuments = await Reminder.find({ date: currentDate });
+  console.log(matchingDocuments)
+
+  for (const doc of matchingDocuments) {
+    const mailOptions = {
+      from: `"Symptoms Tracker" <sumitbopche01@gmail.com>`,
+      to: doc.user_email,
+      subject: doc.title,
+      text: doc.description,
+    };
+
+    sendEmailMessage(mailOptions);
+    console.log(`Email sent to ${doc.user_email}`);
+  }
+});
+
 app.use('/', sessionRouters);
 app.use('/api/user', userRouters);
 app.use('/api/symptoms', symptomsRouters);
+app.use('/api/reminder', reminderRouters);
 app.use('/api/hospitals', hospitalsRouters);
 app.use('/api/appointments', appointmentsRouters);
 
