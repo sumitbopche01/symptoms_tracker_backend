@@ -1,10 +1,8 @@
-const helper = require('../utils/helper.util');
-const Symptoms = require('../models/symptoms.model');
+const helper = require("../utils/helper.util");
+const Symptoms = require("../models/symptoms.model");
 
 async function getAllSymptoms(req, res, next) {
-  const rows = await Symptoms.find()
-  .sort({ date: 1 })
-  .lean();
+  const rows = await Symptoms.find().sort({ date: 1 }).lean();
   const data = helper.emptyOrRows(rows);
   return {
     data,
@@ -40,10 +38,8 @@ async function getMultiple(queryParams = {}) {
     matchQuery.to_date = new Date(to_date);
   }
 
-  const rows = await Symptoms.find(matchQuery)
-    .sort({ date: 1 })
-    .lean();
-    
+  const rows = await Symptoms.find(matchQuery).sort({ date: 1 }).lean();
+
   const data = helper.emptyOrRows(rows);
   return {
     data,
@@ -58,10 +54,10 @@ async function getMultiple(queryParams = {}) {
 async function create(restaurantData) {
   const result = await Symptoms.create(restaurantData);
 
-  let message = 'Error in creating symptom';
+  let message = "Error in creating symptom";
 
   if (result) {
-    message = 'Symptom created successfully';
+    message = "Symptom created successfully";
   }
 
   return { message };
@@ -77,10 +73,10 @@ async function update(id, restaurantData) {
   console.log(restaurantData);
   const result = await Symptoms.updateOne({ _id: id }, restaurantData);
 
-  let message = 'Error in updating restaurant';
+  let message = "Error in updating restaurant";
 
   if (result) {
-    message = 'Restaurant updated successfully';
+    message = "Restaurant updated successfully";
   }
 
   return { message };
@@ -94,10 +90,10 @@ async function update(id, restaurantData) {
 async function remove(id) {
   const result = await Symptoms.findByIdAndDelete(id);
 
-  let message = 'Error in deleting restaurant';
+  let message = "Error in deleting restaurant";
 
   if (result) {
-    message = 'Restaurant deleted successfully';
+    message = "Restaurant deleted successfully";
   }
 
   return { message };
