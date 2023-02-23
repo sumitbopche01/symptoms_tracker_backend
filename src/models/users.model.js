@@ -17,6 +17,9 @@ const UserSchema = new Schema({
     required: true
   },
   emergencyContacts : [{
+    name: {
+      type: String
+    },
     phone: {
       type: String
     },
