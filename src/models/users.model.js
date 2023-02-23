@@ -16,14 +16,17 @@ const UserSchema = new Schema({
     type: Number,
     required: true
   },
-  emergencyContact : {
+  emergencyContacts : [{
+    name: {
+      type: String
+    },
     phone: {
       type: String
     },
     email: {
       type: String
     }
-  }
+  }]
 });
 
 // UserSchema.pre('save', true, async (next) => {
