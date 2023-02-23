@@ -32,9 +32,11 @@ async function login(userData) {
   };
 }
 
-async function getAllEmergencyContacts() {
-  const userData = await Users.find({ email});
-  return userData.emergencyContacts;
+async function getAllEmergencyContacts(email) {
+  console.log('getAllEmergencyContacts', email);
+  const userData = await Users.find({email: email});
+  console.log("userData ", userData);
+  return userData[0]?.emergencyContacts;
 }
 
 async function sendReport(emailId, sendTo) {
