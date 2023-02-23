@@ -30,8 +30,20 @@ async function getAllEmergencyContacts(req, res, next) {
   }
 }
 
+async function sendReport(req, res, next) {
+  try {
+    const emailId = req.query.email;
+    const sendTo = req.query.sendTo;
+    res.json(await usersService.sendReport(emailId, sendTo));
+  } catch (err) {
+    console.error('Error while send email', err.message);
+    next(err);
+  }
+}
+
 module.exports = {
   signUp,
   login,
   getAllEmergencyContacts,
+  sendReport
 };

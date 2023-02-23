@@ -6,7 +6,7 @@ const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const Users = require("../models/users.model");
-const { getAllEmergencyContacts } = require("../controller/users.controller");
+const { getAllEmergencyContacts, sendReport } = require("../controller/users.controller");
 
 const router = express.Router();
 
@@ -96,5 +96,7 @@ router.post("/", async (req, res, next) => {
 // );
 
 router.get("/emergency-contacts", getAllEmergencyContacts);
+
+router.get('/send-report', sendReport);
 
 module.exports = router;

@@ -1,6 +1,8 @@
 const helper = require('../utils/helper.util');
 // const config = require('../configs/general.config');
 const Users = require('../models/users.model');
+const Symptoms = require('../models/symptoms.model');
+const sendEmailMessage = require('../utils/mail.util');
 
 /**
  *
@@ -35,8 +37,24 @@ async function getAllEmergencyContacts() {
   return userData.emergencyContacts;
 }
 
+async function sendReport(emailId, sendTo) {
+  const patientRecords = await Symptoms.find({ user_email: emailId });
+  
+  console.log("patientRecords: " + patientRecords);
+  const mailOptions = {
+    from: "sumitbopche01@gmail.com",
+    to: sendTo,
+    subject: 'Symtoms Tracking Reports',
+    text: JSON.stringify(patientRecords)
+  };
+
+  sendEmailMessage(mailOptions);
+  return {message: "Report sent successfully"};
+}
+
 module.exports = {
   signUp,
   login,
-  getAllEmergencyContacts
+  getAllEmergencyContacts,
+  sendReport
 };
