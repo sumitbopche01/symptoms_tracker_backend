@@ -1,6 +1,16 @@
 const helper = require('../utils/helper.util');
 const Symptoms = require('../models/symptoms.model');
 
+async function getAllSymptoms(req, res, next) {
+  const rows = await Symptoms.find()
+  .sort({ date: 1 })
+  .lean();
+  const data = helper.emptyOrRows(rows);
+  return {
+    data,
+  };
+}
+
 /**
  *
  * @param {String} symptomsId

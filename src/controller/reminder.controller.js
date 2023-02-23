@@ -2,7 +2,7 @@ const reminderService = require('../services/reminder.service');
 
 async function get(req, res, next) {
     try {
-      res.json(await reminderService.getSingle(req.params.symptoms_id));
+      res.json(await reminderService.getSingle(req.params.remindeId));
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error('Error while getting reminder', err.message);

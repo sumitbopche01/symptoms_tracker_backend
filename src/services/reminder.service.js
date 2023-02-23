@@ -7,11 +7,19 @@ const Reminder = require('../models/reminder.model');
  * @param {String} reminderId
  * @returns single reminder document
  */
-async function getSingle(reminderId) {
-  const rows = await Reminder.find({ _id: reminderId });
+async function getSingle(queryParams = {}) {
+  let { _id } = queryParams;
+  // Prepare query
+  const matchQuery = {};
+  if (_id) {
+    matchQuery._id = _id;
+  }
+  const rows = await Reminder.find(matchQuery)
+    .lean();
   const data = helper.emptyOrRows(rows);
+  console.log(rows)
   return {
-    data,
+    data
   };
 }
 
