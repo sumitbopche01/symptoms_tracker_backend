@@ -10,21 +10,24 @@ const transporter = nodemailer.createTransport({
 });
 
 // Set up the email options
-const mailOptions = {
-    from: "sumitbopche01@gmail.com",
-    to: 'sumitbopche01@gmail.com',
-    subject: 'Test Email from Nodemailer',
-    text: 'Hello from Nodemailer!'
-};
+// const mailOptions = {
+//     from: "sumitbopche01@gmail.com",
+//     to: 'sumitbopche01@gmail.com',
+//     subject: 'Test Email from Nodemailer',
+//     text: 'Hello from Nodemailer!'
+// };
 
-// Send the email
-transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-        console.log('Error occurred:', error.message);
-        return;
-    }
-    console.log('Message sent:', info.messageId);
-});
+const sendEmailMessage = (mailOptions) => {
+    // Send the email
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log('Error occurred:', error.message);
+            return;
+        }
+        console.log('Message sent:', info.messageId);
+    });
+}
 
+// sendEmailMessage(mailOptions);
 
-transporter.sendMail(mailOptions);
+module.exports = sendEmailMessage;
