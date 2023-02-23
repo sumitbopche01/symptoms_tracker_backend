@@ -22,7 +22,8 @@ async function login(req, res, next) {
 
 async function getAllEmergencyContacts(req, res, next) {
   try {
-    res.json(await usersService.getAllEmergencyContacts());
+    const email = req.query.email;
+    res.json(await usersService.getAllEmergencyContacts(email));
   } catch (err) {
     console.error('Error while getAllEmergencyContacts', err.message);
     next(err);
