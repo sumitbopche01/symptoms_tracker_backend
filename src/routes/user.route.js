@@ -6,7 +6,10 @@ const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const Users = require("../models/users.model");
-const { getAllEmergencyContacts, sendReport } = require("../controller/users.controller");
+const {
+  getAllEmergencyContacts,
+  sendReport,
+} = require("../controller/users.controller");
 
 const router = express.Router();
 
@@ -14,7 +17,7 @@ router.post(
   "/signup",
   //  passport.authenticate('signup', { session: false }),
   async (req, res) => {
-    console.log(req.body);
+    console.log("signup", req.body);
     try {
       req.body.password = await bcrypt.hash(req.body.password, 10);
       const user = await Users.create(req.body);
@@ -54,7 +57,10 @@ router.post("/login", async (req, res, next) => {
         return res.json({ token });
       });
     } catch (error) {
-      return next(error);
+      return res.json({
+        message: "Login Failed",
+        user: req.user,
+      });
     }
   })(req, res, next);
 });
@@ -97,6 +103,6 @@ router.post("/login", async (req, res, next) => {
 
 router.get("/emergency-contacts", getAllEmergencyContacts);
 
-router.get('/send-report', sendReport);
+router.get("/send-report", sendReport);
 
 module.exports = router;
