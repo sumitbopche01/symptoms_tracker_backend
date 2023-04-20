@@ -16,6 +16,8 @@ const symptomsRouters = require('./src/routes/symptoms.route');
 const hospitalsRouters = require('./src/routes/hospitals.route');
 const appointmentsRouters = require('./src/routes/appointments.route');
 const sendEmailMessage = require('./src/utils/mail.util');
+const sleepTrackerRouters = require('./src/routes/sleepTracker.route');
+const medicationRouters = require('./src/routes/medicationTracker.route');
 
 require('./src/models/db');
 require('./src/auth/auth');
@@ -90,6 +92,8 @@ app.use('/api/symptoms', symptomsRouters);
 app.use('/api/reminder', reminderRouters);
 app.use('/api/hospitals', hospitalsRouters);
 app.use('/api/appointments', appointmentsRouters);
+app.use('/api/sleep', sleepTrackerRouters);
+app.use('/api/medication', medicationRouters);
 
 /* Error handler middleware */
 // eslint-disable-next-line no-unused-vars

@@ -10,7 +10,6 @@ async function get(req, res, next) {
   }
 }
 
-
 async function getMultiple(req, res, next) {
   try {
     res.json(await appointmentsService.getMultiple(req.query));
@@ -50,7 +49,6 @@ async function remove(req, res, next) {
     next(err);
   }
 }
-
 
 module.exports = {
   get,
