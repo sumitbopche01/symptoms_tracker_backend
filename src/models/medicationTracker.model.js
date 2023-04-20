@@ -13,7 +13,7 @@ const medicationTrackerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    symtomSeverity: {
+    symptomSeverity: {
         type: String,
         required: true
     },
